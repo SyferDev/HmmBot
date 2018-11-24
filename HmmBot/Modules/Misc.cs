@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
+using Discord.Audio;
 using HmmBot.RedditHmm;
 
 namespace HmmBot.Modules
@@ -14,6 +15,7 @@ namespace HmmBot.Modules
     /// </summary>
     public class Misc : ModuleBase<SocketCommandContext>
     {
+
         [Command("hmm?")]
         [Alias(new string[]
         {
@@ -42,6 +44,12 @@ namespace HmmBot.Modules
             embed.WithImageUrl(RedditHandler.RandomHmmLink());
             
             await Context.Channel.SendMessageAsync("", false, embed);
+        }
+
+        [Command("game")]
+        public async Task SetGame(string game)
+        {
+            await Context.Client.SetGameAsync(game);
         }
 
         [Command("echo")]
