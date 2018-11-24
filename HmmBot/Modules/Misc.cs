@@ -9,6 +9,9 @@ using HmmBot.RedditHmm;
 
 namespace HmmBot.Modules
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Misc : ModuleBase<SocketCommandContext>
     {
         [Command("hmm?")]
