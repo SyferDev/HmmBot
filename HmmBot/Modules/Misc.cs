@@ -10,7 +10,7 @@ using HmmBot.RedditHmm;
 namespace HmmBot.Modules
 {
     /// <summary>
-    /// 
+    /// ALlan
     /// </summary>
     public class Misc : ModuleBase<SocketCommandContext>
     {
