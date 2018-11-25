@@ -139,6 +139,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RedditHmm\RedditHandler.cs" />
+    <Compile Include="TimeRetriever.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +147,7 @@
     <None Include="packages.config" />
     <None Include="SystemLang\alerts.json" />
     <None Include="SystemLang\hmm.json" />
+    <None Include="SystemLang\timezones.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

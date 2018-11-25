@@ -22,10 +22,12 @@ namespace HmmBot.RedditHmm
 
         public static string[] posts = new string[500];
 
-        public void InitializeReddit(int numberOfPosts)
+        bool hasDownloaded = false;
+
+        public void DownloadPosts(int numberOfPosts)
         {
-            if (posts != null)
-            {
+            if (!hasDownloaded)
+            { 
                 Console.WriteLine("Downloading " + numberOfPosts + " posts in r/hmmm");
                 Reddit r = new Reddit();
                 var sub = r.GetSubreddit("hmmm");
@@ -34,24 +36,35 @@ namespace HmmBot.RedditHmm
                 {
                     posts[i] = p[i].Url.AbsoluteUri;
                 }
+                hasDownloaded = true;
             }
         }
 
         public RedditHandler()
         {
-            InitializeReddit(500);
             if (!Directory.Exists(postsFolder))
                 Directory.CreateDirectory(postsFolder);
 
-            if (!File.Exists(postsPath))
+            if (File.Exists(postsPath))
             {
-                string json = JsonConvert.SerializeObject(posts, Formatting.Indented);
-                File.WriteAllText(postsPath, json);
+                string raw = File.ReadAllText(postsPath);
+                string[] data = JsonConvert.DeserializeObject<string[]>(raw);
+                if (data.Contains("null"))
+                    DownloadPosts(500);
+                else
+                {
+                    hasDownloaded = true;
+                    for (int i = 0; i < data.Length; i++)
+                    {
+                        posts[i] = data[i];
+                    }
+                }
             }
             else
             {
-                string json = JsonConvert.SerializeObject(posts, Formatting.Indented);
-                File.WriteAllText(postsPath, json);
+                DownloadPosts(500);
+                string data = JsonConvert.SerializeObject(posts, Formatting.Indented);
+                File.WriteAllText(postsPath, data);
             }
 
         }

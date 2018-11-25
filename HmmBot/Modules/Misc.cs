@@ -16,6 +16,17 @@ namespace HmmBot.Modules
     public class Misc : ModuleBase<SocketCommandContext>
     {
 
+        [Command("time")]
+        public async Task TimeZone([Remainder]string country)
+        {
+            var embed = new EmbedBuilder();
+            embed.WithColor(Color.Green);
+            embed.WithTitle(TimeRetriever.TimeIn(country));
+
+            await Context.Channel.SendMessageAsync("", false, embed);
+        }
+
+
         [Command("hmm?")]
         [Alias(new string[]
         {
