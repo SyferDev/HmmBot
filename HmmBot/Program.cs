@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
 using HmmBot.RedditHmm;
+using HmmBot.GiphyHmm;
 
 namespace HmmBot
 {
@@ -19,6 +20,7 @@ namespace HmmBot
         public async Task StartAsync()
         {
             r = new RedditHandler();
+            GiphyHandler g = new GiphyHandler();
             if (Config.bot.token == "" || Config.bot.token == null) return;
             _client = new DiscordSocketClient(new DiscordSocketConfig
             {

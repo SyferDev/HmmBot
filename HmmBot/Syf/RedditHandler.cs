@@ -110,10 +110,11 @@ namespace HmmBot.RedditHmm
                 {
                     DownloadGreentext(500);
                     hasDownloadedGreenText = true;
-                    for (int i = 0; i < greentexts.Length; i++)
-                    {
-                        greentexts[i] = data[i];
-                    }
+                    
+                }
+                for (int i = 0; i < greentexts.Length; i++)
+                {
+                    greentexts[i] = data[i];
                 }
             }
             else
@@ -140,10 +141,6 @@ namespace HmmBot.RedditHmm
             return text;
         }
 
-    }
-
-    public struct GreentextModel
-    {
     }
     
     public struct Greentext
