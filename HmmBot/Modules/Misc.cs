@@ -15,6 +15,15 @@ namespace HmmBot.Modules
     /// </summary>
     public class Misc : ModuleBase<SocketCommandContext>
     {
+        [Command("greentext")]
+        public async Task Greentext()
+        {
+            var embed = new EmbedBuilder().
+                WithTitle(RedditHandler.RandomGreentext().title).
+                WithImageUrl(RedditHandler.RandomGreentext().imgUrl);
+
+            await Context.Channel.SendMessageAsync("", false, embed);
+        }
 
         [Command("what is life")]
         [Alias(new string[] { "what is the meaning of life?", "what is the meaning of life", "what is life", "meaning of life"})]
@@ -61,7 +70,7 @@ namespace HmmBot.Modules
         {
             var embed = new EmbedBuilder();
             embed.WithTitle("hmmm :thinking:");
-            embed.WithImageUrl(RedditHandler.RandomHmmLink());
+            embed.WithImageUrl(RedditHandler.RandomHmm());
             
             await Context.Channel.SendMessageAsync("", false, embed);
         }
