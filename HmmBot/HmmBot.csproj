@@ -145,6 +145,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <Content Include="Resources\config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\gtPosts.json" />
+    <None Include="Resources\hmmposts.json" />
     <None Include="SystemLang\alerts.json" />
     <None Include="SystemLang\hmm.json" />
     <None Include="SystemLang\timezones.json" />
