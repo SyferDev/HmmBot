@@ -7,6 +7,7 @@ using Discord;
 using Discord.Commands;
 using Discord.Audio;
 using HmmBot.RedditHmm;
+using HmmBot.GiphyHmm;
 
 namespace HmmBot.Modules
 {
@@ -19,6 +20,7 @@ namespace HmmBot.Modules
         public async Task Greentext()
         {
             var embed = new EmbedBuilder().
+                WithColor(Color.Green).
                 WithTitle(RedditHandler.RandomGreentext().title).
                 WithImageUrl(RedditHandler.RandomGreentext().imgUrl);
 
@@ -33,6 +35,13 @@ namespace HmmBot.Modules
             await Context.Channel.SendMessageAsync("", false, embed);
         }
         
+        [Command("gif")]
+        public async Task Gif([Remainder]string query)
+        {
+            var gifUrl = await GiphyHandler.RandomGifWithSearch(query);
+            var embed = new EmbedBuilder().WithColor(Color.Magenta).WithImageUrl(gifUrl);
+            await Context.Channel.SendMessageAsync("", false, embed);
+        }
 
         [Command("time")]
         public async Task TimeZone([Remainder]string country)
