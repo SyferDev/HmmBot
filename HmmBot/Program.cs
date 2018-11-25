@@ -37,6 +37,7 @@ namespace HmmBot
         private async Task Log(LogMessage msg)
         {
             Console.WriteLine(msg.Message);
+
         }
     }
 }

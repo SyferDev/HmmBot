@@ -16,6 +16,15 @@ namespace HmmBot.Modules
     public class Misc : ModuleBase<SocketCommandContext>
     {
 
+        [Command("what is life")]
+        [Alias(new string[] { "what is the meaning of life?", "what is the meaning of life", "what is life", "meaning of life"})]
+        public async Task Life()
+        {
+            var embed = new EmbedBuilder().WithColor(Color.Green).WithTitle("42");
+            await Context.Channel.SendMessageAsync("", false, embed);
+        }
+        
+
         [Command("time")]
         public async Task TimeZone([Remainder]string country)
         {
