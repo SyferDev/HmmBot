@@ -47,7 +47,7 @@ namespace HmmBot.Modules
         }
 
         [Command("game")]
-        public async Task SetGame(string game)
+        public async Task SetGame([Remainder]string game)
         {
             await Context.Client.SetGameAsync(game);
         }
