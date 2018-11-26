@@ -142,6 +142,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Syf\GiphyHandler.cs" />
+    <Compile Include="Syf\Meme.cs" />
+    <Compile Include="Syf\RedditController.cs" />
     <Compile Include="Syf\RedditHandler.cs" />
     <Compile Include="TimeRetriever.cs" />
     <Compile Include="Utils.cs" />
@@ -152,8 +154,6 @@
     <Content Include="Resources\config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\gtPosts.json" />
-    <None Include="Resources\hmmposts.json" />
     <None Include="SystemLang\alerts.json" />
     <None Include="SystemLang\hmm.json" />
     <None Include="SystemLang\timezones.json" />

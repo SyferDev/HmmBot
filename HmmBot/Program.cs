@@ -21,6 +21,7 @@ namespace HmmBot
         {
             r = new RedditHandler();
             GiphyHandler g = new GiphyHandler();
+
             if (Config.bot.token == "" || Config.bot.token == null) return;
             _client = new DiscordSocketClient(new DiscordSocketConfig
             {

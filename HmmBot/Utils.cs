@@ -13,13 +13,6 @@ namespace HmmBot
     {
         private static Dictionary<string, string> alerts;
 
-        static Utils()
-        {
-            string rawJson = File.ReadAllText("SystemLang/alerts.json");
-            var data = JsonConvert.DeserializeObject<dynamic>(rawJson);
-            alerts = data.ToObject<Dictionary<string, string>>();
-        }   
-
         public static string GetAlert(string key)
         {
             if (alerts.ContainsKey(key))

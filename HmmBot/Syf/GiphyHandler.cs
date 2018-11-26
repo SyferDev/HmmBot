@@ -18,6 +18,18 @@ namespace HmmBot.GiphyHmm
         {
             giphy = new Giphy("1mTJGb9rBi7F7tlGQV5KyZb8GhEuMz7z");
         }
+        
+        public static async Task<string> TranslateGif(string translated)
+        {
+            var translatedResult = await giphy.TranslateIntoGif(new TranslateParameter()
+            {
+                Phrase = translated
+            });
+
+            string url = translatedResult.Data.BitlyGifUrl;
+            Console.WriteLine(url);
+            return url;
+        }
 
         public static async Task<string> RandomGifWithSearch(string query)
         {

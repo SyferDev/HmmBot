@@ -16,13 +16,29 @@ namespace HmmBot.Modules
     /// </summary>
     public class Misc : ModuleBase<SocketCommandContext>
     {
+        [Command("cursed")]
+        public async Task CursedImage()
+        {
+            var cursed = RedditHandler.RandomSubredditPost("cursedimages", 500);
+            var embed = new EmbedBuilder().WithColor(Color.DarkBlue).WithTitle(cursed.Title).WithImageUrl(cursed.Url.AbsoluteUri);
+            await Context.Channel.SendMessageAsync("", false, embed);
+        }
+
+        [Command("translategif")]
+        public async Task TranslateToGif([Remainder]string translateText)
+        {
+            var embed = new EmbedBuilder().WithColor(Color.Blue).WithImageUrl(await GiphyHandler.TranslateGif(translateText));
+            await Context.Channel.SendMessageAsync("", false, embed);
+        }
+
         [Command("greentext")]
         public async Task Greentext()
         {
+            var greentext = RedditHandler.RandomSubredditPost("greentext", 500);
             var embed = new EmbedBuilder().
                 WithColor(Color.Green).
-                WithTitle(RedditHandler.RandomGreentext().title).
-                WithImageUrl(RedditHandler.RandomGreentext().imgUrl);
+                WithTitle(greentext.Title).
+                WithImageUrl(greentext.Url.AbsoluteUri);
 
             await Context.Channel.SendMessageAsync("", false, embed);
         }
@@ -79,7 +95,7 @@ namespace HmmBot.Modules
         {
             var embed = new EmbedBuilder();
             embed.WithTitle("hmmm :thinking:");
-            embed.WithImageUrl(RedditHandler.RandomHmm());
+            embed.WithImageUrl(RedditHandler.RandomSubredditPost("hmmm", 500).Url.AbsoluteUri);
             
             await Context.Channel.SendMessageAsync("", false, embed);
         }
