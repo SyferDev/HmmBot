@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
-using HmmBot.RedditHmm;
-using HmmBot.GiphyHmm;
+using HmmBot.Syf;
 
 namespace HmmBot
 {
@@ -14,12 +13,10 @@ namespace HmmBot
     {
         DiscordSocketClient _client;
         CommandHandler _handler;
-        RedditHandler r;
         static void Main(string[] args) => new Program().StartAsync().GetAwaiter().GetResult();
 
         public async Task StartAsync()
         {
-            r = new RedditHandler();
             GiphyHandler g = new GiphyHandler();
 
             if (Config.bot.token == "" || Config.bot.token == null) return;

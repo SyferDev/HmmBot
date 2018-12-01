@@ -8,7 +8,7 @@ using GiphyDotNet.Manager;
 using GiphyDotNet.Model.Parameters;
 using GiphyDotNet.Tools;
 
-namespace HmmBot.GiphyHmm
+namespace HmmBot.Syf
 {
     class GiphyHandler
     {

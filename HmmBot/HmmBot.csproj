@@ -144,7 +144,6 @@
     <Compile Include="Syf\GiphyHandler.cs" />
     <Compile Include="Syf\Meme.cs" />
     <Compile Include="Syf\RedditController.cs" />
-    <Compile Include="Syf\RedditHandler.cs" />
     <Compile Include="TimeRetriever.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>

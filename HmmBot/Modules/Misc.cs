@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.Audio;
-using HmmBot.RedditHmm;
-using HmmBot.GiphyHmm;
+using HmmBot.Syf;
 
 namespace HmmBot.Modules
 {
@@ -16,11 +15,11 @@ namespace HmmBot.Modules
     /// </summary>
     public class Misc : ModuleBase<SocketCommandContext>
     {
-        [Command("cursed")]
-        public async Task CursedImage()
+        [Command("reddit")]
+        public async Task RandomSubPost([Remainder]string subreddit)
         {
-            var cursed = RedditHandler.RandomSubredditPost("cursedimages", 500);
-            var embed = new EmbedBuilder().WithColor(Color.DarkBlue).WithTitle(cursed.Title).WithImageUrl(cursed.Url.AbsoluteUri);
+            var cursed = RedditController.RandomSubredditPost(subreddit);
+            var embed = new EmbedBuilder().WithColor(Color.DarkBlue).WithTitle(cursed.title).WithImageUrl(cursed.imgUrl);
             await Context.Channel.SendMessageAsync("", false, embed);
         }
 
@@ -28,18 +27,6 @@ namespace HmmBot.Modules
         public async Task TranslateToGif([Remainder]string translateText)
         {
             var embed = new EmbedBuilder().WithColor(Color.Blue).WithImageUrl(await GiphyHandler.TranslateGif(translateText));
-            await Context.Channel.SendMessageAsync("", false, embed);
-        }
-
-        [Command("greentext")]
-        public async Task Greentext()
-        {
-            var greentext = RedditHandler.RandomSubredditPost("greentext", 500);
-            var embed = new EmbedBuilder().
-                WithColor(Color.Green).
-                WithTitle(greentext.Title).
-                WithImageUrl(greentext.Url.AbsoluteUri);
-
             await Context.Channel.SendMessageAsync("", false, embed);
         }
 
@@ -82,21 +69,6 @@ namespace HmmBot.Modules
             embed.WithTitle(Utils.GetRandomHmm());
             embed.WithColor(new Color(0, 255, 0));
 
-            await Context.Channel.SendMessageAsync("", false, embed);
-        }
-
-        [Command("hmm")]
-        [Alias(new string[]
-        {
-            "meme",
-            "post"
-        })]
-        public async Task HmmMeme()
-        {
-            var embed = new EmbedBuilder();
-            embed.WithTitle("hmmm :thinking:");
-            embed.WithImageUrl(RedditHandler.RandomSubredditPost("hmmm", 500).Url.AbsoluteUri);
-            
             await Context.Channel.SendMessageAsync("", false, embed);
         }
 
